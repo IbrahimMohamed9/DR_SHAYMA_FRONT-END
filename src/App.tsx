@@ -25,6 +25,7 @@ function App() {
           <Route index element={<SubjectTemplate />} />
           <Route path=":articleId" element={<ArticleTemplate />} />
         </Route>
+
         <Route path="/honorList" element={<HonorList />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/login" element={<Login />} />

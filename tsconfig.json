@@ -17,5 +17,5 @@
     "strictNullChecks": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src"]
+  "include": ["src", "dr.shayma/src/app/assets"]
 }
