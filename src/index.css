@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  direction: rtl;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia;
+  margin: 0;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+.swiper-pagination{
+  --swiper-pagination-bottom: 0px
+}
+/* custome components to tailwind */
+@layer components {
+  .translate-center-y {
+    transform: translateY(-50%);
+    top: 50%;
+    position: relative;
+  }
+  .block-fit {
+    width: fit-content;
+    block-size: fit-content;
+  }
+  .hidden-scrollbar {
+    scrollbar-width: none; 
+    -ms-overflow-style: none;  
+  }
+  .hidden-scrollbar::-webkit-scrollbar {
+    display: none; 
+  }
+  .right-transition {
+    transition: right 0.3s ease-in-out; 
+  }
+}
