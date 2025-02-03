@@ -72,6 +72,6 @@ export default {
         times: ['"Times New Roman"', "serif"],
       },
     },
-  },,
+  },
   plugins: [],
 } satisfies Config;

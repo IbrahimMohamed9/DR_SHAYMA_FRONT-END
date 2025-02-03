@@ -1,23 +1,18 @@
 import FirstHomeSection from "@organisms/FirstHomeSection";
 import MainTopics from "@organisms/MainTopics";
 import MostImportantArticles from "@organisms/MostImportantArticles";
-import { useRecoilState } from "recoil";
-import mostFamousArticlesState from "@assets/atoms/mostFamousArticle";
-import { useEffect } from "react";
-import { fetchData } from "@assets/customHooks/RestClient";
+import axiosInstance from "@/assets/customHooks/axios";
 
+export default async function Home() {
+  const mostFamousArticles = await axiosInstance.get("/mostFamousArticles");
 
-export default function Home() {
-    const [, setData] = useRecoilState(mostFamousArticlesState);
-  useEffect(() => {
-    fetchData("mostFamousArticles", { setData });
-  }, [setData]);
   return (
-<div>
+    <div>
       <FirstHomeSection />
       <div className="container">
-        <MostImportantArticles />
+        <MostImportantArticles cards={mostFamousArticles.data} />
         <MainTopics />
       </div>
-    </div>  );
+    </div>
+  );
 }

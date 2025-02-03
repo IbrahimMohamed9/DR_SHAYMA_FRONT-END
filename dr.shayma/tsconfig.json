@@ -1,14 +1,18 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    "module": "node16",
+    "moduleResolution": "node16",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -19,23 +23,55 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@molecules/*": ["./src/components/molecules/*"],
-      "@atoms/*": ["./src/components/atoms/*"],
-      "@organisms/*": ["./src/components/organisms/*"],
-      "@templates/*": ["./src/components/templates/*"],
-      "@adminMol/*": ["./src/app/(admin)/components/molecules/*"],
-      "@adminAto/*": ["./src/app/(admin)/components/atoms/*"],
-      "@adminOrg/*": ["./src/app/(admin)/components/organisms/*"],
-      "@adminTem/*": ["./src/app/(admin)/components/templates/*"]
-    }
+      "@/*": [
+        "./src/*"
+      ],
+      "@molecules/*": [
+        "./src/components/molecules/*"
+      ],
+      "@atoms/*": [
+        "./src/components/atoms/*"
+      ],
+      "@organisms/*": [
+        "./src/components/organisms/*"
+      ],
+      "@templates/*": [
+        "./src/components/templates/*"
+      ],
+      "@adminMol/*": [
+        "./src/app/(admin)/components/molecules/*"
+      ],
+      "@adminAto/*": [
+        "./src/app/(admin)/components/atoms/*"
+      ],
+      "@adminOrg/*": [
+        "./src/app/(admin)/components/organisms/*"
+      ],
+      "@adminTem/*": [
+        "./src/app/(admin)/components/templates/*"
+      ]
+    },
+    "forceConsistentCasingInFileNames": true
   },
+  // "include": [
+  //   "next-env.d.ts",
+  //   "**/*.ts",
+  //   "**/*.tsx",
+  //   "./src/**/*.jsx",
+  //   "./src/**/*.js",
+  //   ".next/types/**/*.ts",
+  //   "./src/component/**/*.tsx",
+  //   "./src/store/**/*.tsx",
+  //   "./src/store/**/*.ts",
+  //   "./src/app/**/*.tsx"
+  // ],
+  "exclude": [
+    "node_modules"
+  ],
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/component/**/*.tsx"
-  ],
-  "exclude": ["node_modules"]
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }
