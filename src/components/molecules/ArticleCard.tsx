@@ -8,6 +8,7 @@ type ArticleCardProps = {
   description: string;
   date: string;
   imgSrc: string;
+  className?: string;
 };
 
 const ArticleCard: FC<ArticleCardProps> = ({
@@ -16,12 +17,17 @@ const ArticleCard: FC<ArticleCardProps> = ({
   description,
   date,
   imgSrc,
+  className,
 }) => {
   return (
-    <div className="flex flex-col rounded-md shadow-md w-190 md:w-190 lg:w-360">
-      <Image 
-        src={imgSrc} 
-        alt={title} 
+    <div
+      className={`flex flex-col rounded-md shadow-md w-190 md:w-190 lg:w-360 ${
+        className || ""
+      }`}
+    >
+      <Image
+        src={imgSrc}
+        alt={title}
         width={360}
         height={190}
         className="rounded-lg object-cover w-full h-[190px]"

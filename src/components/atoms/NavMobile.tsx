@@ -1,5 +1,7 @@
 "use client";
 
+import { useClickAway } from "react-use";
+import { useRef } from "react";
 import { useState } from "react";
 import { Squash as Hamburger } from "hamburger-react";
 import routes from "../../routes";
@@ -9,7 +11,8 @@ import { AnimatePresence, motion } from "framer-motion";
 
 export const NavMobile = () => {
   const [isOpen, setOpen] = useState(false);
-  const onClick = () => setOpen(false);
+  const ref = useRef(null);
+  useClickAway(ref, () => setOpen(false));
 
   const routeElements = routes.map(({ Icon, title, href }, index) => (
     <motion.li
@@ -54,7 +57,7 @@ export const NavMobile = () => {
   );
 
   return (
-    <div onClick={onClick} className="lg:hidden flex items-center">
+    <div ref={ref} className="lg:hidden flex items-center">
       <Hamburger toggled={isOpen} size={30} toggle={setOpen} color="white" />
       <AnimatePresence>
         {isOpen && (

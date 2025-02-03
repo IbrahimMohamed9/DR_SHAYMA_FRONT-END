@@ -8,9 +8,12 @@ import Button from "@atoms/Button";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 
-const AnchorLink = dynamic(() => import("react-anchor-link-smooth-scroll"), {
-  ssr: false,
-});
+const AnchorLink = dynamic(
+  () => import("react-anchor-link-smooth-scroll").then((mod) => mod.default),
+  {
+    ssr: false,
+  }
+);
 
 const FirstHomeSection = () => {
   return (
