@@ -28,7 +28,13 @@ const FirstAboutUsSection = () => {
         </Button>
       </div>
       <div className="max-w-360 mx-auto">
-        <Image src={aqidtna} alt="عقيدتنا" className="mb-8 max-w-full" />
+        <Image 
+          src={aqidtna} 
+          alt="عقيدتنا" 
+          width={480}
+          height={320}
+          className="mb-8 max-w-full h-auto object-contain" 
+        />
       </div>
     </BorderAroundSection>
   );

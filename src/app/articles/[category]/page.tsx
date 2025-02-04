@@ -1,7 +1,10 @@
-import { SubjectTemplate } from '@/components/SubjectTemplate'
+import SubjectTemplate from "@templates/SubjectTemplate";
 
-export default function ArticleCategory({ params }: { 
-  params: { category: string; subcategory: string } 
+export default async function ArticleCategory({
+  params,
+}: {
+  params: { category: string };
 }) {
-  return <SubjectTemplate />
+  const category = params.category;
+  return <SubjectTemplate category={category} subcategory="" />;
 }

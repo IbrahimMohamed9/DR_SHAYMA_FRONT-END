@@ -17,7 +17,12 @@ const nextConfig: NextConfig = {
     return config;
   },
   images: {
-    domains: ["placehold.co", "5.imimg.com", "via.placeholder.com"],
+    domains: [
+      "placehold.co",
+      "www.freepik.com",
+      "5.imimg.com",
+      "via.placeholder.com",
+    ],
   },
 };
 

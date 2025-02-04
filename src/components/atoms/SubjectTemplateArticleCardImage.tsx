@@ -16,7 +16,13 @@ const SubjectTemplateArticleCardImage: FC<
         index % 2 === 0 ? "border-r-2" : "border-l-2"
       }`}
     >
-      <Image src={imgSrc} alt={title} className="w-full" />
+      <Image 
+        src={imgSrc} 
+        alt={title} 
+        width={400}
+        height={300}
+        className="w-full h-auto object-cover" 
+      />
     </div>
   );
 };

@@ -42,7 +42,8 @@ const FirstHomeSection = () => {
           <Image
             src={childrenAqidat}
             alt="عقيدتنا"
-            className="w-36 translate-center-y rounded-lg"
+            width={144}
+            className="translate-center-y rounded-lg"
           />
         </div>
 
@@ -52,7 +53,13 @@ const FirstHomeSection = () => {
             alt="يا بني اركب معنا"
             className="w-36 mb-8 rounded-lg"
           />
-          <Image src={aqidtna} alt="عثيدتنا" className="w-36" />
+          <Image
+            src={aqidtna}
+            alt="عقيدتنا"
+            width={144}
+            height={144}
+            className="w-36 h-auto"
+          />
         </div>
       </div>
     </BorderAroundSection>

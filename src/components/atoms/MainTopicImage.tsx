@@ -14,7 +14,13 @@ const MainTopicImage: FC<MainTopicImageProps> = ({ category }) => {
 
   return (
     <div className="group w-full relative transition-all overflow-hidden">
-      <Image src={smallImg} alt={category} className="w-full" />
+      <Image
+        src={smallImg}
+        alt={category}
+        width={300}
+        height={200}
+        className="w-full h-auto object-cover"
+      />
       <Link href={`/articles/${navTo}`}>
         <Button
           className={`absolute right-1/2 translate-x-1/2 max-xs:px-2 max-xs:py-1 xs:text-lg xs:translate-x-36 text-white bg-${color} absolute -bottom-16 opacity-0 group-hover:opacity-100 group-hover:-translate-y-20`}

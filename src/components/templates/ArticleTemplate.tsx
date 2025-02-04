@@ -27,7 +27,15 @@ const ArticleTemplate = async ({
       flex={false}
     >
       <ArticleBreadcrumb category={category} subcategory={subcategory} />
-      {imgSrc && <Image src={imgSrc} alt={title} />}
+      {imgSrc && (
+        <Image 
+          src={imgSrc} 
+          alt={title} 
+          width={1024}
+          height={576}
+          className="w-full h-auto object-cover rounded-lg"
+        />
+      )}
       <h1 className="text-black text-2xl mt-5">{title}</h1>
       <time className="text-xs text-gray-600  block">{publishTime}</time>
       {content && <FormattedArticle content={content} />}

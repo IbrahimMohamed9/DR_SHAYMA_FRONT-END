@@ -12,7 +12,13 @@ const SubjectTemplateImage: FC<SubjectTemplateImageProps> = ({
 }) => {
   return (
     <div className="mb-6 mx-auto max-w-6xl">
-      <Image src={imgSrc} alt={title} className="" />
+      <Image
+        src={imgSrc}
+        alt={title || ""}
+        width={1280}
+        height={720}
+        className=""
+      />
     </div>
   );
 };

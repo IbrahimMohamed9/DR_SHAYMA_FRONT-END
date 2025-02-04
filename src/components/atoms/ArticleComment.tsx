@@ -14,7 +14,9 @@ const ArticleComment: FC<ArticleCommentProps> = ({ imgSrc, name, comment }) => {
           <Image
             src={imgSrc}
             alt={name}
-            className="rounded-full w-9 h-9 ml-2"
+            width={36}
+            height={36}
+            className="rounded-full size-9 ml-2"
           />
         )}
         <span className="font-bold">{name}</span>
