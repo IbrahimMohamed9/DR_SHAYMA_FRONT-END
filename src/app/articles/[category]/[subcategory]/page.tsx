@@ -1,14 +1,13 @@
 import SubjectTemplate from "@/components/templates/SubjectTemplate";
 
-export default function ArticleCategory({
-  params,
-}: {
-  params: { category: string; subcategory: string };
-}) {
-  return (
-    <SubjectTemplate
-      category={params.category}
-      subcategory={params.subcategory}
-    />
-  );
+interface PageProps {
+  params: {
+    category: string;
+    subcategory: string;
+  };
+}
+
+export default async function ArticleCategory({ params }: PageProps) {
+  const { category, subcategory } = await params;
+  return <SubjectTemplate category={category} subcategory={subcategory} />;
 }

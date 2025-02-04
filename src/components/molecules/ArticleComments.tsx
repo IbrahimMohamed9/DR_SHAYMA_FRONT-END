@@ -1,10 +1,10 @@
 import { FC } from "react";
 import ArticleComment from "@atoms/ArticleComment";
-import { CommentType } from "../../types";
+import { CommentType } from "@/types";
 
 type ArticleCommentsProps = {
   comments: CommentType[];
-}
+};
 
 const ArticleComments: FC<ArticleCommentsProps> = ({ comments }) => {
   return (

@@ -13,12 +13,12 @@ const HeaderButtons: FC<HeaderButtonsProps> = ({
 }) => {
   const buttons = [
     {
-      navTo: "/Login",
+      navTo: "/login",
       className: "bg-main-green text-white " + buttonClassName,
       content: "تسجيل دخول",
     },
     {
-      navTo: "/SignUp",
+      navTo: "/signUp",
       className: "bg-white text-black " + buttonClassName,
       content: "إنشاء حساب",
     },

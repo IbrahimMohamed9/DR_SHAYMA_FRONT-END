@@ -1,7 +1,7 @@
 import { FC } from "react";
 import SubjectTemplateArticleCardImage from "@atoms/SubjectTemplateArticleCardImage";
 import SubjectTemplateArticleCardText from "@atoms/SubjectTemplateArticleCardText";
-import { ArticleType } from "../../types";
+import { ArticleType } from "@/types";
 
 type SubjectTemplateArticleCardProps = {
   index: number;

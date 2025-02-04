@@ -17,7 +17,7 @@ const TitleUnderSumbitBtnForm: FC<TitleUnderSumbitBtnFormProps> = ({
   const content = {
     login: {
       navToTitle: "سجل الان. ",
-      navTo: "/SignUp",
+      navTo: "/signUp",
       title: "لا تمتلك حساب؟ ",
     },
     signUp: {

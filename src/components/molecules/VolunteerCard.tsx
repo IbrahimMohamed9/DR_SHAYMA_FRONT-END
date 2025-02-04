@@ -1,6 +1,6 @@
 import { FC } from "react";
 import VolunteerTextAndIcons from "@atoms/VolunteerTextAndIcons";
-import { Volunteer } from "../../types";
+import { Volunteer } from "@/types";
 import Image from "next/image";
 
 type VolunteerCardProps = {

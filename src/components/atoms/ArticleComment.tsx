@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { PersonInfo } from "../../types";
+import { PersonInfo } from "@/types";
 import Image from "next/image";
 
 type ArticleCommentProps = PersonInfo & {

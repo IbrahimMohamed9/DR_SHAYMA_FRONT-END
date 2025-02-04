@@ -1,6 +1,6 @@
 import { FC } from "react";
 import ProfileActivity from "@atoms/ProfileActivity";
-import { Activity } from "../../types";
+import { Activity } from "@/types";
 
 type ActivitiesProfileScetionProps = {
   activities: Activity[];

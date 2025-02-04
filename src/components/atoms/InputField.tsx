@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { InputFieldType } from "../../types";
+import { InputFieldType } from "@/types";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
 import ErrorMessage from "./ErrorMessage";
 

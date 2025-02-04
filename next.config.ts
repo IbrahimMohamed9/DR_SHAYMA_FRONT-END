@@ -22,6 +22,7 @@ const nextConfig: NextConfig = {
       "www.freepik.com",
       "5.imimg.com",
       "via.placeholder.com",
+      "www.microsoftpressstore.com"
     ],
   },
 };

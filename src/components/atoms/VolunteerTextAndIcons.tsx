@@ -2,7 +2,7 @@ import { FC } from "react";
 import { AiOutlineMail } from "react-icons/ai";
 import { BsWhatsapp } from "react-icons/bs";
 import Link from "next/link";
-import { Volunteer } from "../../types";
+import { Volunteer } from "@/types";
 
 const VolunteerTextAndIcons: FC<Volunteer> = ({
   name,
@@ -17,7 +17,7 @@ const VolunteerTextAndIcons: FC<Volunteer> = ({
       <div className="flex gap-2 mt-2 items-center">
         {whatsappNumber && (
           <Link
-          href={`https://wa.me/${whatsappNumber}`}
+            href={`https://wa.me/${whatsappNumber}`}
             className="text-xl hover:text-whatsapp m-auto"
           >
             <BsWhatsapp className="size-5" />

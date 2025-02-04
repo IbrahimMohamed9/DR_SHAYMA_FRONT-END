@@ -1,5 +1,7 @@
+"use client";
+
 import { FC } from "react";
-import utils from "../../assets/utils/utils";
+import utils from "@/assets/utils/utils";
 import Link from "next/link";
 
 type ArticleBreadcrumbProps = {

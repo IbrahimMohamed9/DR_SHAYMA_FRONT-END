@@ -1,6 +1,5 @@
 import axios from "axios";
 import https from "https";
-import { cookies } from "next/headers";
 
 const createAxiosInstance = () => {
   const instance = axios.create({
@@ -18,8 +17,16 @@ const createAxiosInstance = () => {
 
   instance.interceptors.request.use(
     async (config) => {
-      const cookieStore = await cookies();
-      const token = cookieStore.get("access_token")?.value;
+      let token;
+      if (typeof document === "undefined") {
+        const { cookies } = await import("next/headers");
+        const cookieStore = await cookies();
+        token = cookieStore.get("access_token")?.value;
+      } else {
+        const { useCookies } = await import("next-client-cookies");
+        const cookies = useCookies();
+        token = cookies.get("access_token");
+      }
       if (token) {
         config.headers.authorization = `Bearer ${token}`;
       }

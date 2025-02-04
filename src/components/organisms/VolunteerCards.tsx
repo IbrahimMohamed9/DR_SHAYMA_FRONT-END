@@ -1,6 +1,6 @@
 import { FC } from "react";
 import VolunteerCard from "@molecules/VolunteerCard";
-import { Volunteer } from "../../types";
+import { Volunteer } from "@/types";
 
 type VolunteerCardsProps = {
   volunteers: Volunteer[];

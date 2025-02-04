@@ -1,15 +1,18 @@
+"use client";
+
 import { BsFillArrowLeftSquareFill } from "react-icons/bs";
 import { AiOutlineComment } from "react-icons/ai";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Button from "./Button";
-import { useRecoilState } from "recoil";
-import articleCommentsState from "../../assets/atoms/articleCommentsState";
 import axiosInstance from "@/config/axios";
 
-const CommentInput = () => {
+interface CommentInputProps {
+  onCommentAdded?: (newComment: any) => void;
+}
+
+const CommentInput = ({ onCommentAdded }: CommentInputProps) => {
   const [isInputActive, setIsInputActive] = useState(false);
-  const [comments, setComments] = useRecoilState(articleCommentsState);
   const {
     register,
     handleSubmit,
@@ -37,16 +40,19 @@ const CommentInput = () => {
   };
 
   const onSubmit: SubmitHandler<any> = async (comment) => {
-    const { data } = await axiosInstance.post("/comments", {
-      ...comment,
-      name: "test test",
-      imgSrc: "",
-    });
+    try {
+      const { data } = await axiosInstance.post("/comments", {
+        ...comment,
+        name: "test test",
+        imgSrc: "",
+      });
 
-    const commentList = [...comments, data];
-
-    setComments(commentList);
-    console.log(commentList);
+      onCommentAdded(data);
+      setValue("comment", "");
+      setIsInputActive(false);
+    } catch (error) {
+      console.error("Error posting comment:", error);
+    }
   };
 
   const handleInputBlur = () => {
