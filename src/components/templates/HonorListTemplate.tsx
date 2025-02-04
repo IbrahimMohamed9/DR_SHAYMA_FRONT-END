@@ -1,7 +1,7 @@
 import { FC } from "react";
 import SectionHeader from "@atoms/SectionHeader";
 import VolunteerCards from "@organisms/VolunteerCards";
-import { Volunteer } from "../../types";
+import { Volunteer } from "@/types";
 
 const HonorListTemplate: FC<{ volunteers: Volunteer[] }> = ({ volunteers }) => {
   return (

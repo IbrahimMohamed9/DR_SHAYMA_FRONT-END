@@ -20,7 +20,9 @@ const VolunteerCard: FC<VolunteerCardProps> = ({ volunteer, color }) => {
         <Image
           src={volunteer.imgSrc}
           alt={volunteer.name}
-          className="rounded-full size-20 lg:size-32 sm:ml-4"
+          width={128}
+          height={128}
+          className="rounded-full size-20 lg:size-32 sm:ml-4 object-cover"
         />
       )}
       <VolunteerTextAndIcons
