@@ -1,4 +1,4 @@
-import logo from "./../../assets/images/logo.webp";
+import logo from "@/images/logo.webp";
 import Link from "next/link";
 import { LOGO_DESCRIPTION } from "../../assets/utils/Constants";
 import Image from "next/image";

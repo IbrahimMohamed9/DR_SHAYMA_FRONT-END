@@ -1,7 +1,7 @@
 import FirstAboutUsSection from "@organisms/FirstAboutUsSection";
 import SecondAboutUsSection from "@organisms/SecondAboutUsSection";
 import BooksSection from "@organisms/BooksSection";
-import axiosInstance from "@/assets/customHooks/axios";
+import axiosInstance from "@/config/axios";
 
 export default async function About() {
   const response = await axiosInstance.get("/books");

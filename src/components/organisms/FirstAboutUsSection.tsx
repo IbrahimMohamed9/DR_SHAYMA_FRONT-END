@@ -1,4 +1,4 @@
-import aqidtna from "./../../assets/images/aqidtna.png";
+import aqidtna from "@/images/aqidtna.png";
 import BorderAroundSection from "@atoms/BorderAroundSection";
 import SectionHeader from "@atoms/SectionHeader";
 import Button from "@atoms/Button";
@@ -28,12 +28,12 @@ const FirstAboutUsSection = () => {
         </Button>
       </div>
       <div className="max-w-360 mx-auto">
-        <Image 
-          src={aqidtna} 
-          alt="عقيدتنا" 
+        <Image
+          src={aqidtna}
+          alt="عقيدتنا"
           width={480}
           height={320}
-          className="mb-8 max-w-full h-auto object-contain" 
+          className="mb-8 max-w-full h-auto object-contain"
         />
       </div>
     </BorderAroundSection>

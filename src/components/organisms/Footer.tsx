@@ -1,4 +1,4 @@
-import logo from "./../../assets/images/logo.webp";
+import logo from "@/images/logo.webp";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaFacebookF, FaTelegramPlane } from "react-icons/fa";
 import { BsWhatsapp } from "react-icons/bs";
@@ -6,7 +6,7 @@ import { LOGO_DESCRIPTION } from "../../assets/utils/Constants";
 import FooterWordList from "@atoms/FooterWordList";
 import Link from "next/link";
 import Image from "next/image";
-import axiosInstance from "@/assets/customHooks/axios";
+import axiosInstance from "@/config/axios";
 
 const Footer = async () => {
   const response = await axiosInstance("/mostArticlesFooter");

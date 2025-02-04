@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "server": "json-server --watch src/assets/fakeDB/fakeDB.json"
+    "server": "json-server --watch src/fakeDB/fakeDB.json"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",

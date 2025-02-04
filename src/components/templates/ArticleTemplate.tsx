@@ -3,7 +3,7 @@ import ArticleBreadcrumb from "@atoms/ArticleBreadcrumb";
 import utils from "../../assets/utils/utils";
 import FormattedArticle from "@atoms/FormatArticles";
 import ArticleCommentSection from "@organisms/ArticleCommentSection";
-import axiosInstance from "@/assets/customHooks/axios";
+import axiosInstance from "@/config/axios";
 import Image from "next/image";
 
 const ArticleTemplate = async ({
@@ -28,9 +28,9 @@ const ArticleTemplate = async ({
     >
       <ArticleBreadcrumb category={category} subcategory={subcategory} />
       {imgSrc && (
-        <Image 
-          src={imgSrc} 
-          alt={title} 
+        <Image
+          src={imgSrc}
+          alt={title}
           width={1024}
           height={576}
           className="w-full h-auto object-cover rounded-lg"

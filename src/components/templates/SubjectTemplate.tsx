@@ -3,7 +3,7 @@ import SubjectTemplateImage from "@atoms/SubjectTemplateImage";
 import SectionHeader from "@atoms/SectionHeader";
 import SubjectCategoriesList from "@molecules/SubjectCategoriesList";
 import ArticleCardsSubjectTemplate from "@organisms/ArticleCardsSubjectTemplate";
-import axiosInstance from "@/assets/customHooks/axios";
+import axiosInstance from "@/config/axios";
 
 const SubjectTemplate = async ({
   category,

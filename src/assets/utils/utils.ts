@@ -5,14 +5,14 @@ import {
   HEALTH,
   RAISING,
 } from "./Constants";
-import familyAndLifeSmallImage from "../../assets/images/الاسرة والحياة رئيسي.png";
-import doctrineSmallImage from "../../assets/images/التربية العقائدية رئيسي.png";
-import raisingSmallImage from "../../assets/images/التربية رئيسي.png";
-import healthSmallImage from "../../assets/images/الصحة رئيسي.png";
-import familyAndLifeBigImage from "../../assets/images/الاسرة والحياة مقال.png";
-import doctrineBigImage from "../../assets/images/التربية العقائدية مقال.png";
-import raisingBigImage from "../../assets/images/التربية مقال.png";
-import healthBigImage from "../../assets/images/الصحة مقال.png";
+import familyAndLifeSmallImage from "@/images/الاسرة والحياة رئيسي.png";
+import doctrineSmallImage from "@/images/التربية العقائدية رئيسي.png";
+import raisingSmallImage from "@/images/التربية رئيسي.png";
+import healthSmallImage from "@/images/الصحة رئيسي.png";
+import familyAndLifeBigImage from "@/images/الاسرة والحياة مقال.png";
+import doctrineBigImage from "@/images/التربية العقائدية مقال.png";
+import raisingBigImage from "@/images/التربية مقال.png";
+import healthBigImage from "@/images/الصحة مقال.png";
 
 type CategoryDetails = {
   category: Categories | string | undefined;

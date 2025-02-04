@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import Button from "./Button";
 import { useRecoilState } from "recoil";
 import articleCommentsState from "../../assets/atoms/articleCommentsState";
-import axiosInstance from "@/assets/customHooks/axios";
+import axiosInstance from "@/config/axios";
 
 const CommentInput = () => {
   const [isInputActive, setIsInputActive] = useState(false);

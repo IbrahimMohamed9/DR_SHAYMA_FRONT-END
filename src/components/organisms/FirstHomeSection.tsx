@@ -1,8 +1,8 @@
 "use client";
 
-import aqidtna from "./../../assets/images/aqidtna.png";
-import rideWithUs from "./../../assets/images/rideWithUs.jpg";
-import childrenAqidat from "./../../assets/images/childrenAqidat.jpg";
+import aqidtna from "@/images/aqidtna.png";
+import rideWithUs from "@/images/rideWithUs.jpg";
+import childrenAqidat from "@/images/childrenAqidat.jpg";
 import BorderAroundSection from "@atoms/BorderAroundSection";
 import Button from "@atoms/Button";
 import dynamic from "next/dynamic";
