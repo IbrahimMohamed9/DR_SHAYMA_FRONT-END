@@ -1,3 +1,5 @@
+"use client";
+
 import RTLWraperMUI from "@molecules/RTLWraperMUI";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Button from "@mui/material/Button";

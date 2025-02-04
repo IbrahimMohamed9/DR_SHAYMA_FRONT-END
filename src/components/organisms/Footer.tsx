@@ -19,7 +19,7 @@ const Footer = async () => {
 
   const whoWeAre = [
     { navTo: "", content: "من نحن؟" },
-    { navTo: "/aboutUs", content: "اعرف عنا" },
+    { navTo: "/about", content: "اعرف عنا" },
     { navTo: "/honorList", content: "لائحة الشرف" },
   ];
   const topics = [

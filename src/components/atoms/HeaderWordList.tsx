@@ -4,7 +4,7 @@ import Link from "next/link";
 const HeaderWordList = () => {
   const content = [
     { navigateTo: "/", content: "الرئيسية" },
-    { navigateTo: "/aboutUs", content: "اعرف عنا" },
+    { navigateTo: "/about", content: "اعرف عنا" },
     { navigateTo: "/contactUs", content: "تواصل معانا" },
   ];
 

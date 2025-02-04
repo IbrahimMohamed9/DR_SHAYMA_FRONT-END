@@ -53,18 +53,6 @@
     },
     "forceConsistentCasingInFileNames": true
   },
-  // "include": [
-  //   "next-env.d.ts",
-  //   "**/*.ts",
-  //   "**/*.tsx",
-  //   "./src/**/*.jsx",
-  //   "./src/**/*.js",
-  //   ".next/types/**/*.ts",
-  //   "./src/component/**/*.tsx",
-  //   "./src/store/**/*.tsx",
-  //   "./src/store/**/*.ts",
-  //   "./src/app/**/*.tsx"
-  // ],
   "exclude": [
     "node_modules"
   ],

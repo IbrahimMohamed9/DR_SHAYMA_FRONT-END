@@ -1,16 +1,10 @@
-import { useRecoilState } from "recoil";
+"use client";
+
 import SectionHeader from "@atoms/SectionHeader";
-import booksState from "../../assets/atoms/booksState";
-import BookCard from "@molecules/BookCard";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import BookCard, { BookType } from "@molecules/BookCard";
+import Carousel from "@molecules/Carousel";
 
-const BooksSection = () => {
-  const [books] = useRecoilState(booksState);
-
+const BooksSection = ({ books }: { books: BookType[] }) => {
   const getSlidesPerView = () => {
     const width = window.innerWidth;
     switch (true) {
@@ -51,31 +45,20 @@ const BooksSection = () => {
   };
 
   const bookElementsList = books.map((book, index) => (
-    <SwiperSlide key={index}>
-      <BookCard title={book.title} imgSrc={book.imgSrc} />
-    </SwiperSlide>
+    <BookCard
+      key={index}
+      title={book.title}
+      imgSrc={book.imgSrc}
+      className="keen-slider__slide"
+    />
   ));
 
   return (
     <div className="m-5">
       <SectionHeader content="الكتب المتاحة" className="text-center" />
-      <div className="container flex gap-12 flex-wrap justify-center max-w-full">
-        <Swiper
-          dir="rtl"
-          navigation={true}
-          pagination={{
-            dynamicBullets: true,
-            clickable: true,
-          }}
-          modules={[Navigation, Pagination]}
-          className="w-full h-[22rem]"
-          slidesPerView={getSlidesPerView()}
-          centeredSlides={true}
-          grabCursor={true}
-        >
-          {bookElementsList}
-        </Swiper>
-      </div>
+      <Carousel getSlidesPerView={getSlidesPerView}>
+        {bookElementsList}
+      </Carousel>
     </div>
   );
 };

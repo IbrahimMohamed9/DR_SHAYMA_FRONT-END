@@ -3,9 +3,9 @@ import { AiOutlineComment } from "react-icons/ai";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Button from "./Button";
-import { RestClient } from "../../assets/customHooks/RestClient";
 import { useRecoilState } from "recoil";
 import articleCommentsState from "../../assets/atoms/articleCommentsState";
+import axiosInstance from "@/assets/customHooks/axios";
 
 const CommentInput = () => {
   const [isInputActive, setIsInputActive] = useState(false);
@@ -37,7 +37,7 @@ const CommentInput = () => {
   };
 
   const onSubmit: SubmitHandler<any> = async (comment) => {
-    const { data } = await RestClient("comments", "POST", {
+    const { data } = await axiosInstance.post("/comments", {
       ...comment,
       name: "test test",
       imgSrc: "",
