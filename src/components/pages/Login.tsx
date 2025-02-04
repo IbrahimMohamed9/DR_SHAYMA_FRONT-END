@@ -1,5 +1,7 @@
+"use client";
+
 import PasswordIcon from "@atoms/PasswordIcon";
-import FormTemplate from "../templates/FormTemplate";
+import FormTemplate from "@templates/FormTemplate";
 import ForgetPasswordLoginScreen from "@atoms/ForgetPasswordLoginScreen";
 import { useState } from "react";
 import SocialButton from "@atoms/SocialButton";

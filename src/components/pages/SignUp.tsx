@@ -1,3 +1,5 @@
+"use client";
+
 import PasswordIcon from "@atoms/PasswordIcon";
 import FormTemplate from "../templates/FormTemplate";
 import { useState } from "react";
