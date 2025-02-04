@@ -23,7 +23,10 @@ const ProfileInfoSection: FC<ProfileInfoSectionProps> = ({
           <Image
             src={imgSrc}
             alt={name}
-            className="size-32 max-md:ml-5 md:size-44 rounded-full"
+            width={176}
+            height={176}
+            className="size-32 max-md:ml-5 md:size-44 rounded-full object-cover"
+            priority
           />
         )}
         <div className="max-w-full">

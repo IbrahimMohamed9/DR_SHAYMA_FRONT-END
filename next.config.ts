@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
     return config;
   },
   images: {
-    domains: ["placehold.co", "5.imimg.com"],
+    domains: ["placehold.co", "5.imimg.com", "via.placeholder.com"],
   },
 };
 

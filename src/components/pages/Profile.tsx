@@ -1,4 +1,4 @@
-import ProfileTemplate from "../templates/ProfileTemplate";
+import ProfileTemplate from "@templates/ProfileTemplate";
 
 const Profile = () => {
   const activities = [
