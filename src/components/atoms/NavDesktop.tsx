@@ -1,5 +1,5 @@
 import Link from "next/link";
-import routes from "../../routes";
+import routes from "@/routes";
 
 const NavDesktop = () => {
   const routesElement = routes.map(({ title, href, Icon }) => (

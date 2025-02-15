@@ -4,7 +4,7 @@ import { useClickAway } from "react-use";
 import { useRef } from "react";
 import { useState } from "react";
 import { Squash as Hamburger } from "hamburger-react";
-import routes from "../../routes";
+import routes from "@/routes";
 import Link from "next/link";
 import HeaderButtons from "@molecules/HeaderButtons";
 import { AnimatePresence, motion } from "framer-motion";
