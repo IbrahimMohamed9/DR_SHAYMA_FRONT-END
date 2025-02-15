@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, ReactNode } from "react";
+import React, { useState, ReactNode, useEffect } from "react";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
@@ -14,7 +14,20 @@ const Carousel = ({
   getSlidesPerView: (value: number) => number;
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const slidesPerView = getSlidesPerView(window.innerWidth);
+  const [slidesPerView, setSlidesPerView] = useState(1); // Default value
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setSlidesPerView(getSlidesPerView(window.innerWidth));
+
+      const handleResize = () => {
+        setSlidesPerView(getSlidesPerView(window.innerWidth));
+      };
+
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, [getSlidesPerView]);
 
   const [sliderRef, instanceRef] = useKeenSlider({
     rtl: true,
