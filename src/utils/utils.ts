@@ -1,10 +1,4 @@
-import {
-  Categories,
-  DOCTRINAL_EDUCATION,
-  FAMILY_AND_LIFE,
-  HEALTH,
-  RAISING,
-} from "./Constants";
+import { CategoriesAr, CategoriesEn } from "./Constants";
 import familyAndLifeSmallImage from "@/images/الاسرة والحياة رئيسي.png";
 import doctrineSmallImage from "@/images/التربية العقائدية رئيسي.png";
 import raisingSmallImage from "@/images/التربية رئيسي.png";
@@ -13,20 +7,53 @@ import familyAndLifeBigImage from "@/images/الاسرة والحياة مقال
 import doctrineBigImage from "@/images/التربية العقائدية مقال.png";
 import raisingBigImage from "@/images/التربية مقال.png";
 import healthBigImage from "@/images/الصحة مقال.png";
+import { StaticImageData } from "next/image";
 
 type CategoryDetails = {
-  category: Categories | string | undefined;
+  category: CategoriesEn | string | undefined;
   color: string;
   hexColor: string;
-  smallImg: any;
-  bigImg: any;
+  smallImg: StaticImageData;
+  bigImg: StaticImageData;
   navTo: string;
 };
+
+export function detectLanguage(text: string) {
+  if (/^[\u0600-\u06FF\s]+$/.test(text)) {
+    return "ar";
+  } else if (/^[A-Za-z\s]+$/.test(text)) {
+    return "en";
+  } else if (/^\d+$/.test(text)) {
+    return "id";
+  } else {
+    return "Mixed or Other";
+  }
+}
+
+export function getCardCategoryColor(category: string) {
+  switch (category) {
+    case CategoriesEn.RAISING:
+    case CategoriesAr.RAISING:
+      return "main-blue";
+    case CategoriesAr.DOCTRINAL_EDUCATION:
+    case CategoriesEn.DOCTRINAL_EDUCATION:
+      return "main-orange";
+    case CategoriesEn.HEALTH:
+    case CategoriesAr.HEALTH:
+      return "main-green";
+    case CategoriesEn.FAMILY_AND_LIFE:
+    case CategoriesAr.FAMILY_AND_LIFE:
+      return "main-red";
+    default:
+      return "black";
+  }
+}
 
 const utils = {
   categoryDetails: (category: string | undefined): CategoryDetails => {
     switch (category) {
-      case RAISING:
+      case CategoriesEn.RAISING:
+      case CategoriesAr.RAISING:
         return {
           category: category,
           color: "main-orange",
@@ -35,7 +62,8 @@ const utils = {
           bigImg: raisingBigImage,
           navTo: "Raising",
         };
-      case DOCTRINAL_EDUCATION:
+      case CategoriesEn.DOCTRINAL_EDUCATION:
+      case CategoriesAr.DOCTRINAL_EDUCATION:
         return {
           category: category,
           color: "main-blue",
@@ -44,17 +72,18 @@ const utils = {
           bigImg: doctrineBigImage,
           navTo: "DoctrinalEducation",
         };
-      case HEALTH:
+      case CategoriesEn.HEALTH:
+      case CategoriesAr.HEALTH:
         return {
           category: category,
           color: "main-green",
           hexColor: "#3e7422",
-
           smallImg: healthSmallImage,
           bigImg: healthBigImage,
           navTo: "Health",
         };
-      case FAMILY_AND_LIFE:
+      case CategoriesEn.FAMILY_AND_LIFE:
+      case CategoriesAr.FAMILY_AND_LIFE:
         return {
           category: category,
           color: "main-red",
