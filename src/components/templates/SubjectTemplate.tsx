@@ -18,7 +18,7 @@ const SubjectTemplate = async ({
 
   let articlesReq;
   const subcategoriesReq = await axiosInstance.get(
-    `/article-subcategory/category/${detectLanguage(
+    `/article-subcategories/category/${detectLanguage(
       decodedCategory
     )}/${category}`
   );

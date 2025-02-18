@@ -14,7 +14,7 @@ const Footer = async () => {
   const newestArticleReq = await axiosInstance("/articles");
   const newestArticleData = newestArticleReq.data;
 
-  const topicsReq = await axiosInstance("/article-category");
+  const topicsReq = await axiosInstance("/article-categories");
   const topicsData = topicsReq.data;
 
   let newestArticle;
