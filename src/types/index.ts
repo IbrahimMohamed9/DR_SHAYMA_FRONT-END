@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ElementType } from "react";
 import { Path } from "react-hook-form";
 
@@ -12,15 +13,30 @@ export type CommentType = PersonInfo & {
   comment: string;
 };
 
+export type CategoryType = {
+  categoryId: number;
+  categoryEn: string;
+  categoryAr: string;
+};
+
+export type SubcategoryType = {
+  categoryId: number;
+  subcategoryId: number;
+  subcategoryEn: string;
+  subcategoryAr: string;
+};
+
 export type ArticleType = {
+  id: string;
   title: string;
-  category: string;
-  subcategory: string;
+  visitedTimes: number;
+  subcategory: SubcategoryType;
+  subcategoryId: string;
   description: string;
-  imgSrc: string;
+  img: string;
+  imgDescription: string;
   createAt: string;
   updateAt: string;
-  articleId: string;
 };
 
 export type ContextType<T, K extends string> = {
