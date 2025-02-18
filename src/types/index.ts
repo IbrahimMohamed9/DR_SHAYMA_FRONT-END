@@ -4,7 +4,7 @@ import { Path } from "react-hook-form";
 
 export type PersonInfo = {
   name: string;
-  imgSrc?: string;
+  img?: string;
   email?: string;
 };
 
@@ -70,7 +70,10 @@ export type InputFieldType = {
 
 export type Volunteer = PersonInfo & {
   title: string;
-  whatsappNumber?: string;
+  whatsapp?: string;
+  phone: string;
+  linkedin?: string;
+  position: string;
 };
 
 export type Activity = PersonInfo & {

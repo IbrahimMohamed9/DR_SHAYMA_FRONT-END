@@ -8,29 +8,38 @@ type VolunteerCardProps = {
   color?: string;
 };
 
-// this component for honor list page
 const VolunteerCard: FC<VolunteerCardProps> = ({ volunteer, color }) => {
+  const borderColor = color ?? "main-green";
+
   return (
     <div
-      className={`border-4 border-${
-        color ?? "main-green"
-      } rounded-3xl p-4 flex max-xs:flex-col items-center justify-center`}
+      className={`rounded-3xl border-2 border-${borderColor} 
+        p-6 flex flex-col items-center gap-6
+        bg-white/90 hover:shadow-2xl transition-all duration-300 
+        transform hover:-translate-y-1 hover:border-opacity-80
+        backdrop-blur-sm w-full h-full
+        group cursor-pointer`}
     >
-      {volunteer.imgSrc && (
-        <Image
-          src={volunteer.imgSrc}
-          alt={volunteer.name}
-          width={128}
-          height={128}
-          className="rounded-full size-20 lg:size-32 sm:ml-4 object-cover"
-        />
+      {volunteer.img && (
+        <div className="relative">
+          <div
+            className={`absolute inset-0 bg-${borderColor} rounded-full 
+              blur opacity-20 group-hover:opacity-30 transition-opacity duration-300`}
+          />
+          <Image
+            src={volunteer.img}
+            alt={volunteer.name}
+            width={140}
+            height={140}
+            className={`relative rounded-full w-32 h-32 
+              object-cover border-2 border-${borderColor}
+              transition-transform duration-300 group-hover:scale-105
+              shadow-md group-hover:shadow-lg`}
+            priority
+          />
+        </div>
       )}
-      <VolunteerTextAndIcons
-        name={volunteer.name}
-        title={volunteer.title}
-        whatsappNumber={volunteer.whatsappNumber}
-        email={volunteer.email}
-      />
+      <VolunteerTextAndIcons {...volunteer} />
     </div>
   );
 };
