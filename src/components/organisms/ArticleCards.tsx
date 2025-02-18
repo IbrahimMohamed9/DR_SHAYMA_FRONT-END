@@ -33,11 +33,7 @@ const ArticleCards = ({ cards }: { cards: ArticleType[] }) => {
     <ArticleCard
       key={index}
       className="keen-slider__slide"
-      category={card.category}
-      title={card.title}
-      description={card.description}
-      date={card.createAt}
-      imgSrc={card.imgSrc}
+      article={card}
     />
   ));
 
