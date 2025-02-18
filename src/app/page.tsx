@@ -4,7 +4,7 @@ import MostImportantArticles from "@organisms/MostImportantArticles";
 import axiosInstance from "@/config/axios";
 
 export default async function Home() {
-  const mostFamousArticles = await axiosInstance.get("/mostFamousArticles");
+  const mostFamousArticles = await axiosInstance.get("/articles");
 
   return (
     <div>

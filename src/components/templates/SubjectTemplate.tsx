@@ -1,4 +1,4 @@
-import utils from "../../assets/utils/utils";
+import utils, { detectLanguage } from "@/utils/utils";
 import SubjectTemplateImage from "@atoms/SubjectTemplateImage";
 import SectionHeader from "@atoms/SectionHeader";
 import SubjectCategoriesList from "@molecules/SubjectCategoriesList";
@@ -12,19 +12,28 @@ const SubjectTemplate = async ({
   category: string;
   subcategory: string;
 }) => {
-  const { bigImg, color } = utils.categoryDetails(category);
+  const decodedCategory = decodeURI(category);
 
-  let response;
+  const { bigImg, color } = utils.categoryDetails(decodedCategory);
 
-  // TODO:: there is a bug if i navigate directly to subcategory
-  // the subcategories will not render to fix that make variable to render only once
-  // and subcategories api
+  let articlesReq;
+  const subcategoriesReq = await axiosInstance.get(
+    `/article-subcategory/category/${detectLanguage(
+      decodedCategory
+    )}/${category}`
+  );
+
   if (subcategory) {
-    response = await axiosInstance.get(`/articles`);
+    articlesReq = await axiosInstance.get(
+      `/articles/subcategory/${detectLanguage(
+        decodeURI(subcategory)
+      )}/${subcategory}`
+    );
   } else {
-    response = await axiosInstance.get(`/${category}`);
+    articlesReq = await axiosInstance.get(
+      `/articles/category/${detectLanguage(decodedCategory)}/${category}`
+    );
   }
-  const data = response.data;
 
   return (
     <div className="container">
@@ -32,11 +41,11 @@ const SubjectTemplate = async ({
       <SectionHeader content="المقالات" />
       <SubjectCategoriesList
         color={color}
-        categories={data.categories}
+        subcategories={subcategoriesReq.data}
         currentCategory={category}
         currentSubcategory={subcategory}
       />
-      <ArticleCardsSubjectTemplate color={color} articles={data.articles} />
+      <ArticleCardsSubjectTemplate color={color} articles={articlesReq.data} />
     </div>
   );
 };
