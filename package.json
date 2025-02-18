@@ -6,8 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "server": "json-server --watch src/fakeDB/fakeDB.json"
+    "lint": "next lint"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
