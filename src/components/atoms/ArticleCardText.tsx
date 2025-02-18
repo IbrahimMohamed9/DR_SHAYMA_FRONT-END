@@ -1,20 +1,5 @@
 import { FC } from "react";
-import { Categories } from "../../assets/utils/Constants";
-
-function getCardCategoryColor(category: string) {
-  switch (category) {
-    case Categories.RAISING:
-      return "main-blue";
-    case Categories.DOCTRINAL_EDUCATION:
-      return "main-orange";
-    case Categories.HEALTH:
-      return "main-green";
-    case Categories.FAMILY_AND_LIFE:
-      return "main-red";
-    default:
-      return "black";
-  }
-}
+import { getCardCategoryColor } from "@/utils/utils";
 
 type ArticleCardTextProps = {
   category: string;

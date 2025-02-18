@@ -1,5 +1,5 @@
 import { ArticleType } from "@/types";
-import { MOST_IMPORTANT_ARTICLES } from "../../assets/utils/Constants";
+import { MOST_IMPORTANT_ARTICLES } from "@/utils/Constants";
 import SectionHeader from "@atoms/SectionHeader";
 import ArticleCards from "./ArticleCards";
 

@@ -1,6 +1,6 @@
 import BorderAroundSection from "@atoms/BorderAroundSection";
 import ArticleBreadcrumb from "@atoms/ArticleBreadcrumb";
-import utils from "../../assets/utils/utils";
+import utils from "../../utils/utils";
 import FormattedArticle from "@atoms/FormatArticles";
 import ArticleCommentSection from "@organisms/ArticleCommentSection";
 import axiosInstance from "@/config/axios";
