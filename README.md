@@ -20,16 +20,17 @@ This repository contains the front-end code for **Dr. Shaima's official website*
 
 ## Installation
 
-1. **Clone the Repository**:
+
+1. **Clone the Repository Backend**:
 
    ```bash
-   git clone https://github.com/IbrahimMohamed9/DR_SHAYMA_FRONT-END.git
+   git clone https://github.com/IbrahimMohamed9/DR_SHAYMA_BACKEND.git
    ```
 
-2. **Navigate to the Project Directory**:
+2. **Navigate to the Backend Directory**:
 
    ```bash
-   cd DR_SHAYMA_FRONT-END
+   cd DR_SHAYMA_BACKEND
    ```
 
 3. **Install Dependencies**:
@@ -39,6 +40,28 @@ This repository contains the front-end code for **Dr. Shaima's official website*
    ```
 
 4. **Set Up Environment Variables**:
+
+   Create a `.env` file in the root directory and add the necessary environment variables, such as database connection strings and authentication secrets.
+
+5. **Clone the Front-End**:
+
+   ```bash
+   git clone https://github.com/IbrahimMohamed9/DR_SHAYMA_FRONT-END.git
+   ```
+
+6. **Navigate to the Front-End Directory**:
+
+   ```bash
+   cd DR_SHAYMA_FRONT-END
+   ```
+
+7. **Install Dependencies**:
+
+   ```bash
+   npm install
+   ```
+
+8. **Set Up Environment Variables**:
 
    Create a `.env` file in the root directory and add any necessary environment variables.
 
