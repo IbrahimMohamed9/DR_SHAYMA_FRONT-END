@@ -60,6 +60,7 @@ export type LengthValidationType = {
 export type InputFieldType = {
   fieldName: Path<any>;
   required: string;
+  label: string;
   type?: string;
   className?: string;
   PrefixIcon?: ElementType;
@@ -68,6 +69,8 @@ export type InputFieldType = {
   pattern?: PatternValidationType;
   minLength?: LengthValidationType;
   maxLength?: LengthValidationType;
+  onChange?: (i: string) => void;
+  value?: string;
 };
 
 export type Volunteer = PersonInfo & {
