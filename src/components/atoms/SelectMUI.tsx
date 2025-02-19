@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FC } from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -7,8 +8,8 @@ import { FieldErrors, UseFormRegister } from "react-hook-form";
 import FormHelperText from "@mui/material/FormHelperText";
 
 type SelectMUIProps = {
-  values: { ar: string; en: string }[];
-  label: { ar: string; en: string };
+  categories: { category: string }[];
+  label: string;
   handleChange: (event: SelectChangeEvent) => void;
   value: string;
   required?: boolean;
@@ -18,37 +19,39 @@ type SelectMUIProps = {
 
 const SelectMUI: FC<SelectMUIProps> = ({
   value,
-  values,
+  categories,
   label,
   handleChange,
   required = true,
   register,
   errors,
 }) => {
-  const MenuItemElements = values.map((value, index) => (
-    <MenuItem key={index} value={value.en}>
-      {value.ar}
+  const dataLabel = "categoryId";
+
+  const MenuItemElements = categories.map((value, index) => (
+    <MenuItem key={index} value={value.category}>
+      {value.category}
     </MenuItem>
   ));
 
-  const isError = errors[label.en] !== undefined;
+  const isError = errors[dataLabel] !== undefined;
 
   return (
     <FormControl fullWidth error={isError}>
-      <InputLabel>{label.ar}</InputLabel>
+      <InputLabel>{label}</InputLabel>
       <Select
         required={required}
         value={value}
-        label={label.ar}
-        {...register(label.en, {
-          required: "الرجاء ادخال الاسم كامل",
+        label={label}
+        {...register(dataLabel, {
+          required: "الرجاء اختيار نوع الاستفسار",
         })}
         onChange={handleChange}
       >
         {MenuItemElements}
       </Select>
       {isError && (
-        <FormHelperText>{`*${errors[label.en]?.message}`}</FormHelperText>
+        <FormHelperText>{`*${errors[dataLabel]?.message}`}</FormHelperText>
       )}
     </FormControl>
   );
