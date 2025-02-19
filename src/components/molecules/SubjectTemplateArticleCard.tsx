@@ -14,8 +14,7 @@ const SubjectTemplateArticleCard: FC<SubjectTemplateArticleCardProps> = ({
   article,
   color,
 }) => {
-  const { img, title, description, subcategory, id } = article;
-  const { categoryId, subcategoryAr } = subcategory;
+  const { img, title } = article;
 
   return (
     <div
@@ -28,14 +27,7 @@ const SubjectTemplateArticleCard: FC<SubjectTemplateArticleCardProps> = ({
         imgSrc={img}
         title={title}
       />
-      <SubjectTemplateArticleCardText
-        title={title}
-        color={color}
-        description={description}
-        category={String(categoryId)}
-        subcategory={subcategoryAr}
-        articleId={id}
-      />
+      <SubjectTemplateArticleCardText article={article} color={color} />
     </div>
   );
 };

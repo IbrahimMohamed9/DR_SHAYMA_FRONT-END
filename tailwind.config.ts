@@ -20,6 +20,10 @@ export default {
     "bg-main-green",
     "bg-main-red",
     "bg-black",
+    "text-main-blue",
+    "text-main-orange",
+    "text-main-green",
+    "text-main-red",
   ],
   theme: {
     extend: {

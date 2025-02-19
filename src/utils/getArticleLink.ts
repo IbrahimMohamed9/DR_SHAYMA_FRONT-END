@@ -2,9 +2,11 @@ import { ArticleType } from "@/types";
 
 const getArticleLink = (article: ArticleType) => {
   const { subcategory, id } = article;
-  const { categoryId, subcategoryId } = subcategory;
+  const { category, subcategoryAr } = subcategory;
 
-  return `/articles/${categoryId}/${subcategoryId}/${id}`;
+  return `/articles/${encodeURI(category.categoryAr)}/${encodeURI(
+    subcategoryAr
+  )}/${id}/${encodeURI(article.title)}`;
 };
 
 export default getArticleLink;

@@ -24,6 +24,7 @@ export type SubcategoryType = {
   subcategoryId: number;
   subcategoryEn: string;
   subcategoryAr: string;
+  category: CategoryType;
 };
 
 export type ArticleType = {
@@ -35,8 +36,9 @@ export type ArticleType = {
   description: string;
   img: string;
   imgDescription: string;
-  createAt: string;
-  updateAt: string;
+  content: string;
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type ContextType<T, K extends string> = {
