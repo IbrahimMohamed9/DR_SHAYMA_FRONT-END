@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import PasswordIcon from "@atoms/PasswordIcon";
@@ -6,12 +7,16 @@ import { useState } from "react";
 import SocialButton from "@atoms/SocialButton";
 import { ScreenType } from "@atoms/TitleUnderSumbitBtnForm";
 import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
+import { SubmitHandler } from "react-hook-form";
+import axiosInstance from "@/config/axios";
+import { useRouter } from "next/navigation";
 
 const SignUp = () => {
+const router = useRouter();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [gender, setGender] = useState("");
   const [phone, setPhone] = useState("");
-  const [phoneError, setPhoneError] = useState("dsfsd");
+  const [phoneError, setPhoneError] = useState(""); // Initialize as empty
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -39,13 +44,13 @@ const SignUp = () => {
       label: "phone",
       required: "الرجاء رقم الهاتف",
       fieldName: "رقم الهاتف",
-      onchange: (phone: string) => setPhone(phone),
+      onChange: (phone: string) => setPhone(phone),
       value: phone,
       errorMsg: phoneError,
     },
     {
       type: "date",
-      label: "date",
+      label: "dob",
       required: "الرجاء ادخال تاريخ الميلاد",
       fieldName: "تاريخ الميلاد",
     },
@@ -68,6 +73,25 @@ const SignUp = () => {
     facebook: "إنشاء حساب مع فيسبوك",
   };
 
+  const onSubmit: SubmitHandler<any> = async (data) => {
+    try {
+      setPhoneError("");
+      await axiosInstance.post("/auth/register", { ...data, phone, gender });
+      router.push("/login");
+    } catch (error: any) {
+      if (error.response?.data?.message) {
+        const messages = error.response.data.message;
+        if (Array.isArray(messages)) {
+          const phoneErrorMsg = messages.find((msg) => msg.includes("phone"));
+          if (phoneErrorMsg) {
+            setPhoneError(phoneErrorMsg);
+          }
+        }
+      }
+      console.log("Registration error:", error.response?.data || error.message);
+    }
+  };
+
   return (
     <FormTemplate
       inputFields={fieldsList}
@@ -75,6 +99,7 @@ const SignUp = () => {
       submitBtnClassName="w-full texst-xl"
       submitBtnTitle="إنشاء الحساب"
       screenType={ScreenType.SIGN_UP}
+      onSubmit={onSubmit}
     >
       <RadioGroup
         value={gender}

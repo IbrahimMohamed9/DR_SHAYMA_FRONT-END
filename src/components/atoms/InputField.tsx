@@ -3,7 +3,6 @@ import { FC } from "react";
 import { InputFieldType } from "@/types";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
 import ErrorMessage from "./ErrorMessage";
-import { PhoneNumberUtil } from "google-libphonenumber";
 import { MuiPhone } from "./PhoneInput";
 
 type InputFieldProps = {
@@ -28,7 +27,6 @@ const InputField: FC<InputFieldProps> = ({ register, errors, inputField }) => {
     label,
     onChange,
   } = inputField;
-  const phoneUtil = PhoneNumberUtil.getInstance();
 
   if (type === "phone") {
     return <MuiPhone value={value} label={label} onChange={onChange} />;

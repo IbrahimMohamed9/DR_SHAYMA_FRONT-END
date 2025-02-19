@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FC, ReactNode } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { InputFieldType } from "@/types";
@@ -16,6 +17,7 @@ type FormTemplateProps = {
   submitBtnTitle: string;
   children: ReactNode;
   screenType?: ScreenType;
+  onSubmit: SubmitHandler<any>;
 };
 
 const FormTemplate: FC<FormTemplateProps> = ({
@@ -25,6 +27,7 @@ const FormTemplate: FC<FormTemplateProps> = ({
   submitBtnTitle,
   children,
   screenType,
+  onSubmit,
 }) => {
   const {
     register,
@@ -32,7 +35,6 @@ const FormTemplate: FC<FormTemplateProps> = ({
     formState: { errors },
   } = useForm<any>();
 
-  const onSubmit: SubmitHandler<any> = (data) => console.log(data);
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}

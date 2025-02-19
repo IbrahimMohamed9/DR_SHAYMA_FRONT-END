@@ -10,6 +10,10 @@ import {
   usePhoneInput,
 } from "react-international-phone";
 import countriesTranslation from "@/data/countriesEnToAr.json";
+// import { PhoneNumberUtil } from "google-libphonenumber";
+
+const countriesTranslationTyped: { [key: string]: string } =
+  countriesTranslation;
 
 export interface MUIPhoneProps extends BaseTextFieldProps {
   value?: string;
@@ -22,6 +26,8 @@ export const MuiPhone: React.FC<MUIPhoneProps> = ({
   value = "",
   label,
 }) => {
+  // const phoneUtil = PhoneNumberUtil.getInstance();
+
   const { inputValue, handlePhoneValueChange, inputRef, country, setCountry } =
     usePhoneInput({
       defaultCountry: "eg",
@@ -77,7 +83,7 @@ export const MuiPhone: React.FC<MUIPhoneProps> = ({
           {defaultCountries.map((c) => {
             const country = parseCountry(c);
             let { name } = country;
-            name = countriesTranslation[name];
+            name = countriesTranslationTyped[name];
             if (country.dialCode === "972") {
               name = "عرب الداخل";
             }

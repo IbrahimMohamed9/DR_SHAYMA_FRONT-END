@@ -23,22 +23,28 @@ const createAxiosInstance = () => {
   );
 
   instance.interceptors.response.use(
-    (response) => {
-      return response;
-    },
+    (response) => response,
     (error) => {
-      let errorMessage = "An unexpected error occurred";
+      let errorMessage = "حدث خطأ غير متوقع";
 
       if (error.response) {
-        console.error("Server Error:", error.response.data);
-        console.error("Status Code:", error.response.status);
-        errorMessage = error.response.data.message || "Server error occurred";
+        const responseData = error.response.data;
+        if (responseData && Object.keys(responseData).length === 0) {
+          errorMessage = "خطأ في الخادم - يرجى المحاولة مرة أخرى";
+        } else {
+          errorMessage = responseData?.message || "حدث خطأ في الخادم";
+          if (Array.isArray(errorMessage)) {
+            errorMessage = errorMessage[0];
+          }
+        }
+        console.log("Server Error:", responseData);
+        console.log("Status Code:", error.response.status);
       } else if (error.request) {
-        console.error("Network Error:", error.request);
-        errorMessage = "Network error - please check your connection";
+        errorMessage = "خطأ في الشبكة - يرجى التحقق من اتصالك";
+        console.log("Network Error:", error.request);
       } else {
-        console.error("Request Error:", error.message);
-        errorMessage = error.message || "Error setting up the request";
+        errorMessage = error.message || "خطأ في إعداد الطلب";
+        console.log("Request Error:", error.message);
       }
 
       error.customMessage = errorMessage;
