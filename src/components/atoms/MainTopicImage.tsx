@@ -1,12 +1,12 @@
 import { FC } from "react";
 import Button from "./Button";
 import Link from "next/link";
-import utils from "../../assets/utils/utils";
-import { Categories } from "../../assets/utils/Constants";
+import utils from "@/utils/utils";
+import { CategoriesEn } from "@/utils/Constants";
 import Image from "next/image";
 
 type MainTopicImageProps = {
-  category: Categories;
+  category: CategoriesEn;
 };
 
 const MainTopicImage: FC<MainTopicImageProps> = ({ category }) => {

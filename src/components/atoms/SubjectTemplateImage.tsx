@@ -1,9 +1,9 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { FC } from "react";
 
 type SubjectTemplateImageProps = {
   title?: string;
-  imgSrc: string;
+  imgSrc: StaticImageData;
 };
 
 const SubjectTemplateImage: FC<SubjectTemplateImageProps> = ({

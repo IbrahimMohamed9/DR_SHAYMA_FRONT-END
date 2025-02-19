@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ElementType } from "react";
 import { Path } from "react-hook-form";
 
 export type PersonInfo = {
   name: string;
-  imgSrc?: string;
+  img?: string;
   email?: string;
 };
 
@@ -12,15 +13,32 @@ export type CommentType = PersonInfo & {
   comment: string;
 };
 
+export type CategoryType = {
+  categoryId: number;
+  categoryEn: string;
+  categoryAr: string;
+};
+
+export type SubcategoryType = {
+  categoryId: number;
+  subcategoryId: number;
+  subcategoryEn: string;
+  subcategoryAr: string;
+  category: CategoryType;
+};
+
 export type ArticleType = {
+  id: string;
   title: string;
-  category: string;
-  subcategory: string;
+  visitedTimes: number;
+  subcategory: SubcategoryType;
+  subcategoryId: string;
   description: string;
-  imgSrc: string;
-  createAt: string;
-  updateAt: string;
-  articleId: string;
+  img: string;
+  imgDescription: string;
+  content: string;
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type ContextType<T, K extends string> = {
@@ -42,6 +60,7 @@ export type LengthValidationType = {
 export type InputFieldType = {
   fieldName: Path<any>;
   required: string;
+  label: string;
   type?: string;
   className?: string;
   PrefixIcon?: ElementType;
@@ -50,11 +69,16 @@ export type InputFieldType = {
   pattern?: PatternValidationType;
   minLength?: LengthValidationType;
   maxLength?: LengthValidationType;
+  onChange?: (i: string) => void;
+  value?: string;
 };
 
 export type Volunteer = PersonInfo & {
   title: string;
-  whatsappNumber?: string;
+  whatsapp?: string;
+  phone: string;
+  linkedin?: string;
+  position: string;
 };
 
 export type Activity = PersonInfo & {

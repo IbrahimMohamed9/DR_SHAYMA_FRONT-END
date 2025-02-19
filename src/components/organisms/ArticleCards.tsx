@@ -1,8 +1,9 @@
 "use client";
 
-import ArticleCard from "@molecules/ArticleCard";
+// import ArticleCard from "@molecules/ArticleCard";
 import { ArticleType } from "@/types";
 import Carousel from "@molecules/Carousel";
+import BaseCard from "./BaseCard";
 
 const ArticleCards = ({ cards }: { cards: ArticleType[] }) => {
   const getSlidesPerView = (width: number) => {
@@ -30,14 +31,10 @@ const ArticleCards = ({ cards }: { cards: ArticleType[] }) => {
   };
 
   const articles = cards?.map((card, index) => (
-    <ArticleCard
+    <BaseCard
       key={index}
       className="keen-slider__slide"
-      category={card.category}
-      title={card.title}
-      description={card.description}
-      date={card.createAt}
-      imgSrc={card.imgSrc}
+      article={card}
     />
   ));
 

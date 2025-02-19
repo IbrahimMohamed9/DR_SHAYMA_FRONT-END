@@ -20,12 +20,24 @@ export default {
     "bg-main-green",
     "bg-main-red",
     "bg-black",
+    "text-main-blue",
+    "text-main-orange",
+    "text-main-green",
+    "text-main-red",
   ],
   theme: {
     extend: {
       screens: {
         xs: "480px",
         xxs: "400px",
+        "max-xs": { max: "639px" },
+        "max-md": { max: "767px" },
+      },
+      borderColor: {
+        "main-green": "#10B981",
+      },
+      boxShadow: {
+        "2xl": "0 25px 50px -12px rgba(0, 0, 0, 0.15)",
       },
       borderRadius: {
         16: "16rem",
@@ -36,6 +48,7 @@ export default {
       },
       borderWidth: {
         2: "2px",
+        3: "3px",
         5: "5px",
       },
       transitionProperty: {
@@ -48,9 +61,10 @@ export default {
         "main-blue": "#1877f2",
         "main-orange": "#ed7609",
         "royal-blue": "#2D3648",
+        linkedin: "#0077b5",
+        whatsapp: "#25D366",
         cyan: "#00B0F2",
         telegram: "#00b0f2",
-        whatsapp: "#00e510",
         gray: {
           700: "#616161",
         },

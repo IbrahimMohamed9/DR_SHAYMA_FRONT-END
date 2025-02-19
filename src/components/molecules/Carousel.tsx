@@ -14,7 +14,7 @@ const Carousel = ({
   getSlidesPerView: (value: number) => number;
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [slidesPerView, setSlidesPerView] = useState(1); // Default value
+  const [slidesPerView, setSlidesPerView] = useState(1);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -40,6 +40,9 @@ const Carousel = ({
     loop: false,
     mode: "snap",
     drag: true,
+    defaultAnimation: {
+      duration: 100,
+    },
     slideChanged(slider) {
       setCurrentSlide(slider.track.details.rel);
     },

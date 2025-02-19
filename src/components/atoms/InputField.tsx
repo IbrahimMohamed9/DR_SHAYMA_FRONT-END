@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FC } from "react";
 import { InputFieldType } from "@/types";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
 import ErrorMessage from "./ErrorMessage";
+import { MuiPhone } from "./PhoneInput";
 
 type InputFieldProps = {
   inputField: InputFieldType;
@@ -21,23 +23,30 @@ const InputField: FC<InputFieldProps> = ({ register, errors, inputField }) => {
     ElementBelowField,
     minLength,
     maxLength,
+    value,
+    label,
+    onChange,
   } = inputField;
+
+  if (type === "phone") {
+    return <MuiPhone value={value} label={label} onChange={onChange} />;
+  }
 
   return (
     <>
-      <label htmlFor={fieldName}>{fieldName}</label>
+      <label htmlFor={label}>{fieldName}</label>
       <div
         className={`w-full relative border border-slate-400 rounded p-1 ${
           PrefixIcon && "relative"
         }`}
       >
         <input
-          id={fieldName}
+          id={label}
           type={type}
           className={`py-1 px-4 focus:bg-royal-blue focus:bg-opacity-20 rounded-lg outline-none h-full
             ${PrefixIcon ? "w-[calc(100%-2rem)]" : "w-full"}
             ${className ?? ""}`}
-          {...register(fieldName, {
+          {...register(label, {
             maxLength: maxLength,
             minLength: minLength,
             required: required,
@@ -46,7 +55,7 @@ const InputField: FC<InputFieldProps> = ({ register, errors, inputField }) => {
         />
         {PrefixIcon && <PrefixIcon onClick={OnClickIcon} inputType={type} />}
       </div>
-      <ErrorMessage errors={errors} fieldName={fieldName} />
+      <ErrorMessage errors={errors} fieldName={label} />
       {ElementBelowField && <ElementBelowField />}
     </>
   );

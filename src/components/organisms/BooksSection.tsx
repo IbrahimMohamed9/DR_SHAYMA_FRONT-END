@@ -48,7 +48,8 @@ const BooksSection = ({ books }: { books: BookType[] }) => {
     <BookCard
       key={index}
       title={book.title}
-      imgSrc={book.imgSrc}
+      img={book.img}
+      description={book.description}
       className="keen-slider__slide"
     />
   ));

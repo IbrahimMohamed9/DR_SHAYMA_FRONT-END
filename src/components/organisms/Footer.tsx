@@ -2,33 +2,50 @@ import logo from "@/images/logo.webp";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaFacebookF, FaTelegramPlane } from "react-icons/fa";
 import { BsWhatsapp } from "react-icons/bs";
-import { LOGO_DESCRIPTION } from "../../assets/utils/Constants";
+import { LOGO_DESCRIPTION } from "@/utils/Constants";
 import FooterWordList from "@atoms/FooterWordList";
 import Link from "next/link";
 import Image from "next/image";
 import axiosInstance from "@/config/axios";
+import getArticleLink from "@/utils/getArticleLink";
+import { ArticleType } from "@/types";
 
 const Footer = async () => {
-  const response = await axiosInstance("/mostArticlesFooter");
-  const data = response.data;
+  const newestArticleReq = await axiosInstance("/articles");
+  const newestArticleData = newestArticleReq.data;
 
-  const mostFamousArticles = data && [
-    { content: "أشهر المقالات", navTo: "" },
-    ...data,
-  ];
+  const topicsReq = await axiosInstance("/article-categories");
+  const topicsData = topicsReq.data;
+
+  let newestArticle;
+  if (newestArticleData) {
+    const articles = newestArticleData
+      .slice(0, 3)
+      .map((article: ArticleType) => {
+        const link = getArticleLink(article);
+        return { content: article.title, navTo: link };
+      });
+    newestArticle = [{ content: "أحدث المقالات", navTo: "" }, ...articles];
+  }
+
+  let topics;
+  if (topicsData) {
+    const topicsObjects = topicsData.map((topic: { categoryAr: string }) => {
+      return {
+        content: topic.categoryAr,
+        navTo: `/articles/${topic.categoryAr}`,
+      };
+    });
+
+    topics = [{ navTo: "", content: "المواضيع" }, ...topicsObjects];
+  }
 
   const whoWeAre = [
     { navTo: "", content: "من نحن؟" },
     { navTo: "/about", content: "اعرف عنا" },
     { navTo: "/honorList", content: "لائحة الشرف" },
   ];
-  const topics = [
-    { navTo: "", content: "المواضيع" },
-    { navTo: "/articles/DoctrinalEducation", content: "التربية العقائدية" },
-    { navTo: "/articles/FamilyAndLife", content: "الاسرة و الحياة" },
-    { navTo: "/articles/Raising", content: "التربية" },
-    { navTo: "/articles/Health", content: "الصحة" },
-  ];
+
   const commonSvgClasses =
     "size-8 border-2 p-1 rounded-full transition-all duration-300";
   const socialMediaIcons = [
@@ -78,13 +95,15 @@ const Footer = async () => {
           </Link>
           <ul className="flex gap-10">{socialMediaIconsElements}</ul>
         </div>
-        {mostFamousArticles && (
+        {newestArticle && (
           <FooterWordList
             className="max-xs:text-center"
-            content={mostFamousArticles}
+            content={newestArticle}
           />
         )}
-        <FooterWordList className="max-sm:hidden" content={topics} />
+        {topics && (
+          <FooterWordList className="max-sm:hidden" content={topics} />
+        )}
         <FooterWordList className="max-xs:text-center" content={whoWeAre} />
       </div>
     </footer>

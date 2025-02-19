@@ -19,15 +19,13 @@ const SubjectCategory: FC<subjectCategoryProps> = ({
   return (
     <Link
       href={`/articles/${currentCategory}/${valueKey}/`}
-      className={`rounded-16 border border-${color} hover:border-black 
-      hover:border-opacity-50 text-base py-1 px-2 cursor-pointer hover:text-white 
-      transition-all duration-300 hover:bg-${color}
-      ${
+      className={`rounded-16 border hover:border-black border-${color}
+      hover:border-opacity-50 text-base font-bold py-1 px-2 cursor-pointer hover:text-white 
+      transition-all duration-300 hover:bg-${color} py-2 px-4 ${
         currentSubcategory === valueKey
           ? `bg-${color} border-black text-white  border-opacity-50`
           : ""
-      }
-      `}
+      }`}
     >
       {value}
     </Link>

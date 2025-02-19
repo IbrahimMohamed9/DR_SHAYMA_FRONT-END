@@ -1,46 +1,59 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import RTLWraperMUI from "@molecules/RTLWraperMUI";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
-import { useState } from "react";
+import { FC, useState } from "react";
 import { SelectChangeEvent } from "@mui/material/Select";
 import FeedbackTextarea from "@atoms/FeedbackTextarea";
 import FeedbackTextFields from "@molecules/FeedbackTextFields";
 import SelectMUI from "@atoms/SelectMUI";
 import Grid from "@mui/material/Grid2";
+import axiosInstance from "@/config/axios";
 
-const FeedbackFrom = () => {
+type FeedbackFromProps = {
+  contactCategories: { category: string }[];
+};
+
+const FeedbackFrom: FC<FeedbackFromProps> = ({ contactCategories }) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<any>();
-  const [category, setCategory] = useState("");
+  const [categoryId, setCategoryId] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-
-  const contactFormCategories = [
-    { ar: "استفسار عام", en: "General Inquiry" },
-    { ar: "دعم فني", en: "Technical Support" },
-    { ar: "شكاوى", en: "Complaints" },
-    { ar: "اقتراحات", en: "Suggestions" },
-    { ar: "طلبات خاصة", en: "Special Requests" },
-    { ar: "أسئلة متكررة", en: "Frequently Asked Questions" },
-    { ar: "أخرى", en: "Other" },
-  ];
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handlePhoneChange = (value: string) => {
     setPhoneNumber(value);
   };
 
   const handleChangeCategory = (event: SelectChangeEvent) => {
-    setCategory(event.target.value as string);
+    setCategoryId(event.target.value as string);
   };
-  const onSubmit: SubmitHandler<any> = (data) => {
-    data = { ...data, phoneNumber: phoneNumber, category: category };
-
-    console.log(data);
+  const onSubmit: SubmitHandler<any> = async (data) => {
+    try {
+      setIsSubmitting(true);
+      const formData = {
+        ...data,
+        phoneNumber: phoneNumber,
+      };
+      console.log(formData);
+      await axiosInstance.post("/feedbacks", formData);
+      reset();
+      setCategoryId("");
+      setPhoneNumber("");
+      // Add success message handling here if needed
+    } catch (error) {
+      console.error("Failed to submit feedback:", error);
+      // Add error message handling here if needed
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -52,10 +65,10 @@ const FeedbackFrom = () => {
       <RTLWraperMUI className="flex gap-4 flex-wrap">
         <Grid container spacing={2}>
           <SelectMUI
-            values={contactFormCategories}
-            value={category}
+            categories={contactCategories}
+            value={categoryId}
             handleChange={handleChangeCategory}
-            label={{ ar: "نوع الاستفسار", en: "category" }}
+            label={"نوع الاستفسار"}
             errors={errors}
             register={register}
           />
@@ -72,8 +85,9 @@ const FeedbackFrom = () => {
               variant="contained"
               endIcon={<SendIcon className="rotate-180" />}
               type="submit"
+              disabled={isSubmitting}
             >
-              ارسال
+              {isSubmitting ? "جاري الإرسال..." : "ارسال"}
             </Button>
           </Grid>
         </Grid>

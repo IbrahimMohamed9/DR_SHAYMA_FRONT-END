@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FC } from "react";
 import { InputFieldType } from "@/types";
 import { FieldErrors, UseFormRegister } from "react-hook-form";

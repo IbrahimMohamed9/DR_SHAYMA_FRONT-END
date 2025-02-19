@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FC, useState } from "react";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
 import TextField from "@mui/material/TextField";
@@ -42,6 +43,20 @@ const FeedbackTextFields: FC<FeedbackTextFieldsProps> = ({
   };
   return (
     <ThemeProvider theme={theme}>
+      <Grid size={{ xs: 12, sm: 12, md: 12 }}>
+        <TextField
+          fullWidth={true}
+          label="عنوان الاقتراح"
+          error={!!errors["title"]?.message}
+          required
+          helperText={
+            errors["title"]?.message ? `*${errors["title"].message}` : ""
+          }
+          {...register("title", {
+            required: "الرجاء كتابة عنوان للاقتراح",
+          })}
+        />
+      </Grid>
       <Grid size={{ xs: 12, sm: 12, md: 6 }}>
         <TextField
           fullWidth={true}
